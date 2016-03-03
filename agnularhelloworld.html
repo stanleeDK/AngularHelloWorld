@@ -1,0 +1,59 @@
+<!--//<html ng-app>
+	<body>
+		<h1>Hello {{1 + 2}}</h1>
+	<script src="angular.js">
+	</script>
+	</body>
+</html>-->
+<style>
+
+</style>
+
+<h1>Intro to Angular</h1>
+<ul>
+	<li>Angular lets you do MVC in a client server setup</li>
+	<li>It also allow you to do data binding. Basically you define your model and then bind it to html elements. You can do server to client using {{}} or viceversa using directives and html tag to model attribute binding. </li>
+</ul>
+<hr />
+
+<html ng-app>
+	Here the html tag has ng-app which tells angular that the entire html app is under it's purview. You also use the ng-model directive to bind an html element to the data model. </br>
+	You also used the ng-bind directive.</br>
+	<body ng-app>
+			
+		<input type="text" ng-model="name" placeholder="Enter your name">
+		{{1 + 2}} <span ng-bind="name"></span>
+		</br>
+		</br>
+		</br>
+		
+		With Angular it takes care of the data binding. You've defined the model, attached html tags to it. It handles the rest. No need to write event handlers, find DOM elements and send them. </br>
+		<form ng-submit="ctrl.submitData()">
+			<input type="text" ng-model="user.name" />
+		</form>
+
+	<script src="angular.js">
+	</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
