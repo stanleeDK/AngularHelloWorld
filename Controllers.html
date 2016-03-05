@@ -46,7 +46,7 @@
 </html>
 
 <!--introduced the as syntax inside the ng-controller directive, which associates an instance of a controller with a tag. We also showed the this keyword, which maps properities in the controller to {{}} tags in the html. -->
-<!--<html ng-app="notesApp">
+<html ng-app="notesApp">
 	<body ng-controller="MainCtrl as ctrl">
 		{{ctrl.helloMsg}} Angular
 		<br/>
@@ -60,10 +60,10 @@
 			}]);
 		</script>
 	</body>
-</html>-->
+</html>
 
 
-<!--<html ng-app="notesApp">
+<html ng-app="notesApp">
 	<body ng-controller="MainCtrl as ctrl">
 		{{ctrl.msg}} Angular
 		<br/>
@@ -72,13 +72,32 @@
 		<script type="text/javascript">
 			angular.module('notesApp', []).controller('MainCtrl', [function(){
 				this.msg = "Yo Yo DJ";
-				this.changeMessage = function(){this.msg = "adios";}  
+				this.changeMessage = function(){this.msg = "THERE IS A BETTER WAY TO WRITE THIS CODE";}  
 			}]);
 		</script>
 	</body>
-</html>-->
+</html>
 
-<!--<html ng-app="notesApp">
+
+<html ng-app="notesApp">
+	<body ng-controller="MainCtrl as ctrl">
+		{{ctrl.msg}} Angular
+		<br/>
+		<button ng-click="ctrl.changeMessage()">Change this message</button>
+		<script src="angular.js"></script>
+		<script type="text/javascript">
+			var app = angular.module('notesApp', []);
+			
+			app.controller('MainCtrl', [function(){
+				this.msg = "Yo Yo DJ";
+				this.changeMessage = function(){this.msg = "THIS IS THE BETTER WAWY";}  
+			}]);
+		</script>
+	</body>
+</html>
+
+
+<html ng-app="notesApp">
 	<body ng-controller="MainCtrl as ctrl">
 		
 		<div ng-repeat="note in ctrl.notes">
@@ -91,7 +110,7 @@
 		<div ng-repeat="note in ctrl.notes" ng-class="ctrl.changeStatus(note.done)">
 			<span class="label" ng-bind="note.label"></span>
 			
-			<!--ng-show is a directive for hiding or showing elements based on truthfulness--*>
+			<!--ng-show is a directive for hiding or showing elements based on truthfulness-->
 			<span class="assignee" ng-show="note.assignee" ng-bind="note.assignee"></span>
 			
 		</div>
@@ -121,6 +140,6 @@
 			}]);
 		</script>
 	</body>
-</html>-->
+</html>
 
 
