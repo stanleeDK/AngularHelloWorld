@@ -1,0 +1,68 @@
+<html ng-app="bigstore">
+	<head>
+		<link rel="stylesheet" href="bootstrap.min.css" />
+	</head>
+	<body>
+		<b>EXAMPLE OF DATA BEING PULLED OUT AND DISPLAYED USING A CONTROLLER</b>
+		<div ng-controller="StoreController as store">
+			{{store.product.name}}
+			{{store.product.price}}
+			{{store.product.description}}
+			</br>
+			Button is shown because the ng-show is evaluating a value and it's being shown. 
+			</br>
+			<button ng-show="store.product.canPurchase">Add To Cart</button>
+			</br>
+		</div>
+		
+		</br>
+
+		
+		<b>Pulling data out again using the controller but looping through an array using ng-repeat</b>
+		<div ng-controller="StoreController as store">
+			<b>Example of ng-repeat</b>
+			<div ng-repeat="gem in store.productcart">
+				{{gem.name}}
+				{{gem.price | currency}}
+				{{gem.canPurchase}}
+			</div>
+		</div>
+		<script src="angular.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			var app = angular.module("bigstore",[ ]);
+			
+			//this is the controller is inside the bigstore module. You reference this inside the ng-controller directive which lives in the html. See how you created attributes this.product and this.productcart which holds the data
+			app.controller("StoreController",function (){
+				this.product = gem;
+				this.productcart = gems; 
+			});
+			
+			var gem = {
+				name: "diamond",
+				price:100,
+				description: "expensive stone",
+				canPurchase: true,
+				soldOut: true
+			}
+			
+			var gems = [
+				{
+					name: "saphire",
+					price:100,
+					description: "expensive stone",
+					canPurchase: false,
+					soldOut: true
+				},
+				{
+					name: "diamond2",
+					price:100,
+					description: "expensive stone",
+					canPurchase: false,
+					soldOut: true
+				}
+			
+			]
+		</script>
+	</body>
+	
+</html>

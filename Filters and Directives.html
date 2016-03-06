@@ -1,0 +1,58 @@
+<html ng-app="bigstore">
+	<head>
+		<link rel="stylesheet" href="bootstrap.min.css" />
+	</head>
+	<body>
+		
+		<b>Filters allow you to format the data or give it special treatment. e.g currency or or dates. Use the pipe notation after the data to invoke</b>
+		</br>
+		<b>Example of ng-repeat and wrapping the data in html, then calling twitter bootstrap css to format it. </b>
+		<div ng-controller="StoreController as store">
+			<div class="list-group">
+				<div ng-repeat="gem in store.productcart | orderBy:'price'" class="list-group=item">
+					<h3>
+						{{gem.name | uppercase}}
+						{{gem.price | currency}}
+						{{gem.canPurchase}}
+						<span class="pull-right">{{gem.datecut | date:'MM/dd/yyyy @ h:mma'}}</span>
+					</h3>
+				</div>
+			</div>
+		</div>
+		<script src="angular.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			var app = angular.module("bigstore",[ ]);
+			
+			//this is the controller is inside the bigstore module. You reference this inside the ng-controller directive which lives in the html. See how you created attributes this.product and this.productcart which holds the data
+			app.controller("StoreController",function (){
+				this.productcart = gems; 
+			});
+			
+			var gems = [
+				{
+					name: "saphire",
+					price:100,
+					description: "expensive stone",
+					canPurchase: false,
+					soldOut: true
+				},
+				{
+					name: "ruby",
+					price:900,
+					description: "expensive stone",
+					canPurchase: false,
+					soldOut: true
+				},
+				{
+					name: "pink diamond",
+					price:1000,
+					description: "expensive stone",
+					canPurchase: false,
+					soldOut: true,
+					datecut:'123345567789'
+				}			
+			]
+		</script>
+	</body>
+	
+</html>
