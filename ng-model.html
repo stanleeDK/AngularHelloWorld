@@ -1,0 +1,56 @@
+lets look at two way data binding. The key to using ng-model is that the controller never touched html/view. The code is only modifying the model and the two values changed. ng-model is mainly used for form controls. 
+</br>
+You can automatically create an object before sending it to the server. Check out submit2
+</br>
+<html ng-app="bigstore">
+	<head>
+		<link rel="stylesheet" href="bootstrap.min.css" />
+	</head>
+	<body ng-controller ="PasswordController as authenticate">
+		<form ng-submit="authenticate.submit1()">
+			<input type="text" ng-model="authenticate.username" class="form-control"/>
+			<input type="password" ng-model="authenticate.password" />
+			<input type="submit" value="Submit" />
+			<!--<button ng-click="authenticate.submit1()">Submit</button>-->
+			<!--<button ng-click="authenticate.change()">Change the Values</button>-->
+			</br>
+		 	<div ng-bind="authenticate.username">This div is bound to the model and will be updated as the model is updated</div>
+		</form>
+		
+		</br>
+		
+		Key thing here is that you never had to declare the user object in the controller. You just defined the attributes in the ng-model tag and it automatically got created and attached to the controller.
+		<form ng-submit="authenticate.submit2()">
+			<input type="text" ng-model="authenticate.user.username" class="form-control"/>
+			<input type="password" ng-model="authenticate.user.password" />
+			<input type="submit" value="Submit" />
+			<!--<button ng-click="authenticate.submit2()">Submit</button>-->
+			<!--<button ng-click="authenticate.change()">Change the Values</button>-->
+			</br>
+			<div ng-bind="authenticate.user.username">This div is bound to the model and will be updated as the model is updated</div>
+		</form>
+	</body>
+	<script src="angular.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		var app = angular.module('bigstore',[])
+		
+		app.controller('PasswordController', function(){
+//			this.change = function(){
+//				this.username = "username changed";
+//				this.pasword = "password changed";
+//				console.log(this.username);
+//				console.log(this.password);
+//			}
+			this.submit1 = function(){
+				var user = {username: this.username, password:this.password};
+				
+				console.log("submitted1 this object to the server after creating it manually " + JSON.stringify(user) );
+			}
+			this.submit2 = function(){				
+				console.log("submitted2 this object to the server after creating it manually " + JSON.stringify(this.user) );
+			}
+		});
+	
+	</script>
+	
+</html>

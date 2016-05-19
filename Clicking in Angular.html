@@ -1,0 +1,90 @@
+<html ng-app="bigstore">
+	<head>
+		<link rel="stylesheet" href="bootstrap.min.css" />
+	</head>
+	<body>
+		
+		<b>Used twitter bootstrap to create tabs really easily, simply nav nav pills creates the tabs for us.</b>
+		<b>We also used ng-click to trap clicks and respond to them.</b>
+	
+		<div ng-controller="StoreController as store">
+			<div class="list-group">
+
+				<div ng-repeat="gem in store.productcart | orderBy:'price'" class="list-group=item">
+					<h4>
+						{{gem.name | uppercase}}
+						{{gem.price | currency}}
+						{{gem.canPurchase}}
+						<span class="pull-right">{{gem.datecut | date:'MM/dd/yyyy @ h:mma'}}</span>
+					</h4>
+				</div>
+			
+		
+				<b>Here you used twitter bootstrap to create the tabs for you. Then you used the ng-click directive to detect clicks and on a click set the tab value to 1. Tab seems to be an angular variable that's used to detect which tab has been selected. On click, you the ng-class directive checks the tab value, if set to the right value then the class active is added to the tab, which in twitter bootstrap world means </b>
+				<ul class="nav nav-pills" ng-init="tab=1">
+				    <li ng-class="{active:tab === 1}">
+				    	<a ng-click="tab=1">Name</a>
+				    </li>
+				    <li  ng-class="{active:tab === 2}">
+				    	<a ng-click="tab=2" >Price</a>
+				    </li>
+				    <li  ng-class="{active:tab === 3}">
+				    	<a ng-click="tab=3" >Description</a>
+				    </li>
+				</ul>
+				Tab Value {{tab}}
+				</br>
+				
+				<div class="panel" ng-show="tab === 1">
+					<h4>Name</h4>
+					<p>{{store.productcart[0].name}}</p>
+				</div>
+				<div class="panel"  ng-show="tab === 2">
+					<h4>Price</h4>
+					<p>{{store.productcart[0].price}}</p>
+				</div>
+				<div class="panel"  ng-show="tab === 3">
+					<h4>Description</h4>
+					<p>{{store.productcart[0].description}}</p>
+				</div>
+			
+			</div>
+		
+		</div>
+		<script src="angular.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			var app = angular.module("bigstore",[ ]);
+			
+			//this is the controller is inside the bigstore module. You reference this inside the ng-controller directive which lives in the html. See how you created attributes this.product and this.productcart which holds the data
+			app.controller("StoreController",function (){
+				this.productcart = gems; 
+			});
+			
+			var gems = [
+				{
+					name: "saphire",
+					price:100,
+					description: "expensive stone",
+					canPurchase: false,
+					soldOut: true
+				},
+				{
+					name: "ruby",
+					price:900,
+					description: "expensive stone",
+					canPurchase: false,
+					soldOut: true
+				},
+				{
+					name: "pink diamond",
+					price:1000,
+					description: "expensive stone",
+					canPurchase: false,
+					soldOut: true,
+					datecut:'123345567789'
+				}			
+			]
+		</script>
+	</body>
+	
+</html>
